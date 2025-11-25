@@ -1,0 +1,20 @@
+<h1>Welcome back, <%= data.email %>
+</h1>
+<p>
+    <%= msg %>
+</p>
+
+<h3>Your Photos:</h3>
+<% if(data.photos && data.photos.length> 0){ %>
+    <% data.photos.forEach(photo=> { %>
+        <img src="/uploads/<%= photo %>" width="100" style="margin:5px;">
+        <% }) %>
+            <% } else { %>
+                <p>No photos uploaded</p>
+                <% } %>
+
+                    <form action="/uploads-multipule" method="post" enctype="multipart/form-data">
+                        Upload Photos (max 3):
+                        <input type="file" name="photos" multiple required>
+                        <input type="submit" value="Upload">
+                    </form>
